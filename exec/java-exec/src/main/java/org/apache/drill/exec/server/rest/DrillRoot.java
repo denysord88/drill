@@ -225,6 +225,11 @@ public class DrillRoot {
             .header("Access-Control-Allow-Origin", "*")
             .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
             .header("Access-Control-Allow-Credentials","true")
+        .header("X-XSS-Protection","1")
+        .header("X-Content-Type-Options","nosniff")
+        // HTTPS for a max-age of 1 year
+        .header("Strict-Transport-Security","max-age=31536000")
+        .header("Content-Security-Policy","default-src https: 'unsafe-eval' 'unsafe-inline'")
             .allow("OPTIONS").build();
   }
 
